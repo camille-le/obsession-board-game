@@ -1,11 +1,28 @@
+"""
+An HPF ("high pass filter") is a filter that examines a region of an image and boosts
+the intensity of certain pixels based on the difference in intensity of the surrounding pixels.
+
+A kernel is a set of weights that are applied to a region in a source image to
+generate a single pixel in the destination image.
+
+We can think of a kernel as a piece of frosted glass moving over the source image
+and letting a diffused blend of the source's light pass through.
+
+A high-boost filter is a type of HPF and is effective in edge detection:
+[0, -0.25, 0],
+[-0.25, 1, -0.25],
+[0, -0.25, 0]
+
+Below is an example of applying an HPF to an image.
+"""
 import cv2
 import numpy as np
-
 from scipy import ndimage
 
 kernel_3x3 = np.array([[-1, -1, -1],
                        [-1, 8, -1],
                        [-1, -1, -1]])
+
 kernel_5x5 = np.array([[-1, -1, -1, -1, -1],
                        [-1, 1, 2, 1, -1],
                        [-1, 2, 4, 2, -1],
