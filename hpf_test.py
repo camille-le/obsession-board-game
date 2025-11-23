@@ -37,10 +37,17 @@ img = cv2.imread("scan1.jpeg", cv2.IMREAD_GRAYSCALE)
 # Convolution is a digital image processing technique
 # ...that modifies an image by combining its pixels with
 # ...a small, weighted matrix called a kernel (or filter).
+
+
+# The first two methods are two HPFs with two different
+# ...convolution kernels
 k3_img = ndimage.convolve(img, kernel_3x3)
 k5_img = ndimage.convolve(img, kernel_5x5)
-blurred_img = cv2.GaussianBlur(img, (17, 17), 0)
 
+# The third method is an HPF that we botain by applying a LPF
+# ...and calculating the difference between the original image
+# ...a "differential" high-pass filter
+blurred_img = cv2.GaussianBlur(img, (17, 17), 0)
 hpf_img = img - blurred_img
 
 # Define the data and titles
