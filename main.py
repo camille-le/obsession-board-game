@@ -1,3 +1,4 @@
+from matplotlib import pyplot as plt
 import cv2
 
 # Read in Image
@@ -10,31 +11,31 @@ gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 kernel_size = (11, 11)
 blurred_img = cv2.GaussianBlur(gray_img, kernel_size, 0)
 
-# Show Main Image
-cv2.imshow("Image", img)
-cv2.waitKey(0)
+# Apply Canny Edge Detection
+edges = cv2.Canny(img, 100, 200)
 
-# Show Gray Image
-cv2.imshow("Gray Image", gray_img)
-cv2.waitKey(0)
+# Plot Before and After
+rgb_img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+plt.figure(figsize=(15, 5))
 
-# Show BLurred Image
-cv2.imshow("Blurred Image", blurred_img)
-cv2.waitKey(0)
+# 1st Subplot: Original Image (True Color)
+plt.subplot(131)
+plt.imshow(rgb_img)
+plt.title('Original Color Image')
+plt.xticks([]), plt.yticks([])
 
-# Clean up state
-cv2.destroyAllWindows()
+# 2nd Subplot: Gray Image (Single Channel)
+plt.subplot(132)
+plt.imshow(gray_img, cmap='gray')
+plt.title("Gray Image")
+plt.xticks([]), plt.yticks([])
 
-#
-# ## Canny Edge Detection
-#
-# # from matplotlib import pyplot as plt
-# #
-# # edges = cv2.Canny(img, 100, 200)
-# #
-# # plt.subplot(121), plt.imshow(gray_img, cmap = 'gray')
-# # plt.title('Original Image'), plt.xticks([]), plt.yticks([])
-# # plt.subplot(122), plt.imshow(edges, cmap = 'gray')
-# # plt.title('Edge Image'), plt.xticks([]), plt.yticks([])
-# # plt.show()
-# #
+# 3rd Subplot: Edge Image (Binary result must use 'gray' cmap)
+plt.subplot(133)
+plt.imshow(edges, cmap='gray')
+plt.title('Edge Image')
+plt.xticks([]), plt.yticks([])
+
+plt.show()
+
+# For better accuracy, use binary images. So before finding contours, apply threshold or canny edge detection.
