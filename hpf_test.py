@@ -13,7 +13,7 @@ A high-boost filter is a type of HPF and is effective in edge detection:
 [-0.25, 1, -0.25],
 [0, -0.25, 0]
 
-Below is an example of applying an HPF to an image.
+Below are different techniques of applying the different filters.
 """
 import cv2
 import numpy as np
