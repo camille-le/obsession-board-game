@@ -1,8 +1,8 @@
 """
-An HPF ("high pass filter") is a filter that examines a region of an image and boosts
+Definitions:
+* An HPF ("high pass filter") is a filter that examines a region of an image and boosts
 the intensity of certain pixels based on the difference in intensity of the surrounding pixels.
-
-A kernel is a set of weights that are applied to a region in a source image to
+* A kernel is a set of weights that are applied to a region in a source image to
 generate a single pixel in the destination image.
 
 We can think of a kernel as a piece of frosted glass moving over the source image
@@ -18,11 +18,14 @@ Below is an example of applying an HPF to an image.
 import cv2
 import numpy as np
 from scipy import ndimage
+from matplotlib import pyplot as plt
 
+# Define a 3x3 kernel size
 kernel_3x3 = np.array([[-1, -1, -1],
                        [-1, 8, -1],
                        [-1, -1, -1]])
 
+# Define a 5x5 kernel size
 kernel_5x5 = np.array([[-1, -1, -1, -1, -1],
                        [-1, 1, 2, 1, -1],
                        [-1, 2, 4, 2, -1],
@@ -30,21 +33,33 @@ kernel_5x5 = np.array([[-1, -1, -1, -1, -1],
                        [-1, -1, -1, -1, -1]])
 
 img = cv2.imread("scan1.jpeg", cv2.IMREAD_GRAYSCALE)
-k3 = ndimage.convolve(img, kernel_3x3)
-k5 = ndimage.convolve(img, kernel_5x5)
 
-blurred = cv2.GaussianBlur(img, (17, 17), 0)
-g_hpf = img - blurred
+# Convolution is a digital image processing technique
+# ...that modifies an image by combining its pixels with
+# ...a small, weighted matrix called a kernel (or filter).
+k3_img = ndimage.convolve(img, kernel_3x3)
+k5_img = ndimage.convolve(img, kernel_5x5)
+blurred_img = cv2.GaussianBlur(img, (17, 17), 0)
 
-cv2.imshow("3x3", k3)
-cv2.waitKey()
+hpf_img = img - blurred_img
 
-cv2.imshow("5x5", k5)
-cv2.waitKey()
+# Define the data and titles
+k3_img_rgb = cv2.cvtColor(k3_img, cv2.COLOR_BGR2RGB)
+k5_img_rgb = cv2.cvtColor(k5_img, cv2.COLOR_BGR2RGB)
 
-cv2.imshow("blurred", blurred)
-cv2.waitKey()
+plots = [(k3_img_rgb, '3x3', None),
+         (k5_img_rgb, '5x5', None),
+         (blurred_img, 'Blurred', 'gray'),
+         (hpf_img, "HPF", 'gray')]
 
-cv2.imshow("g_hpf", g_hpf)
-cv2.waitKey()
-cv2.destroyAllWindows()
+# Create figure and subplots in one line (or very few)
+fig, axes = plt.subplots(1, 4, figsize=(20, 5))
+
+# Plot the images and set titles using iteration
+for ax, (img, title, cmap) in zip(axes, plots):
+    ax.imshow(img, cmap=cmap)
+    ax.set_title(title)
+    ax.set_xticks([])
+    ax.set_yticks([])
+
+plt.show()
