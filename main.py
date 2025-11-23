@@ -38,4 +38,3 @@ plt.xticks([]), plt.yticks([])
 
 plt.show()
 
-# For better accuracy, use binary images. So before finding contours, apply threshold or canny edge detection.
