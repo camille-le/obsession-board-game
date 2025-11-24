@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 
 # Read in Image
-filename = 'scan1.jpeg'
+filename = 'Scan 3.jpeg'
 
 img = cv2.imread(filename)
 
@@ -67,14 +67,17 @@ if filtered_contours:
     # The final cropped image with a transparent background in the corners
     cropped_img = bgr_alpha_image[final_y:final_y + side_length, final_x:final_x + side_length]
 
+    kernel_size = (7, 7)
+    smoothed_img = cv2.GaussianBlur(cropped_img, kernel_size, 0)
+
     # --- Save the final image as PNG (necessary for transparency) ---
-    output_filename = 'Circular_Cropped_Scan_Transparent.png'
-    cv2.imwrite(output_filename, cropped_img)
+    output_filename = filename.split('.')[0] + " Transparent.png"
+    cv2.imwrite(output_filename, smoothed_img)
 
     # NOTE: cv2.imshow cannot fully display transparency, but we show the result anyway.
-    cv2.imshow("Final Circular Cropped Image (Corners are Transparent in saved PNG)", cropped_img)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    # cv2.imshow("Final Circular Cropped Image (Corners are Transparent in saved PNG)", cropped_img)
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
 
     print(f"✅ Image successfully cropped and saved with a transparent background.")
     print(f"The cropped result is a {side_length}x{side_length} PNG file saved to: **{output_filename}**")
