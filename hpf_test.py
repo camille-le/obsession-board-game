@@ -32,7 +32,7 @@ kernel_5x5 = np.array([[-1, -1, -1, -1, -1],
                        [-1, 1, 2, 1, -1],
                        [-1, -1, -1, -1, -1]])
 
-img = cv2.imread("scan1.jpeg", cv2.IMREAD_GRAYSCALE)
+img = cv2.imread("gemini.png", cv2.IMREAD_GRAYSCALE)
 
 # Convolution is a digital image processing technique
 # ...that modifies an image by combining its pixels with

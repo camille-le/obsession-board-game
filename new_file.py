@@ -17,7 +17,7 @@ kernel_5x5 = np.array([[-1, -1, -1, -1, -1],
                        [-1, 1, 2, 1, -1],
                        [-1, -1, -1, -1, -1]])
 
-img = cv2.imread("scan1.jpeg", cv2.IMREAD_GRAYSCALE)
+img = cv2.imread("gemini.png", cv2.IMREAD_GRAYSCALE)
 img = cv2.fastNlMeansDenoising(img, None, h=10, templateWindowSize=7, searchWindowSize=21)
 
 if img is None:
@@ -62,7 +62,7 @@ if w > 0 and h > 0:
 
     # Crop the ORIGINAL image
     cropped_img = img[y_start:y_end, x_start:x_end]
-    cv2.imwrite("cropped_scan1.jpeg", cropped_img)
+    cv2.imwrite("cropped_scan1.jpeg", img)
 
     # Also crop the hpf_img for comparison
     hpf_img_cropped = hpf_img[y_start:y_end, x_start:x_end]
