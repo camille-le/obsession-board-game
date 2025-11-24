@@ -29,11 +29,18 @@ class VConvolutionFilter(object):
         """Apply the filter with a BGR or gray source/destination."""
         cv2.filter2D(src, -1, self._kernel, dst)
 
-
 class SharpenFilter(VConvolutionFilter):
     """A sharpen filter with a 1-pixel radius."""
     def __init__(self):
         kernel = numpy.array([[-1, -1, -1],
                               [-1, 9, -1],
+                              [-1, -1, -1]])
+        VConvolutionFilter.__init__(self, kernel)
+
+class FindEdgesFilter(VConvolutionFilter):
+    """An edge-finding filter with a 1-pixel radius."""
+    def __init__(self):
+        kernel = numpy.array([[-1, -1, -1],
+                              [-1,  8, -1],
                               [-1, -1, -1]])
         VConvolutionFilter.__init__(self, kernel)
