@@ -44,7 +44,7 @@ img = cv2.imread("scan1.jpeg", cv2.IMREAD_GRAYSCALE)
 k3_img = ndimage.convolve(img, kernel_3x3)
 k5_img = ndimage.convolve(img, kernel_5x5)
 
-# The third method is an HPF that we botain by applying a LPF
+# The third method is an HPF that we obtain by applying a LPF
 # ...and calculating the difference between the original image
 # ...a "differential" high-pass filter
 blurred_img = cv2.GaussianBlur(img, (17, 17), 0)
