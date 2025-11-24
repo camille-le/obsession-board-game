@@ -2,8 +2,10 @@ from matplotlib import pyplot as plt
 import cv2
 import numpy as np
 
+filename = 'Scan.jpeg'
+
 # Read in Image
-img = cv2.imread('scan1.jpeg')
+img = cv2.imread(filename)
 assert img is not None, "file could not be read, check file path."
 
 # Get Gray Image

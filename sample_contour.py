@@ -2,7 +2,9 @@ import cv2
 import numpy as np
 
 # Reads an image from a file
-img = cv2.pyrDown(cv2.imread("scan1.jpeg"))
+filename = 'Scan.jpeg'
+
+img = cv2.pyrDown(cv2.imread(filename))
 
 # Applies a threshold to a grayscale image
 ret, thresh = cv2.threshold(cv2.cvtColor(img, cv2.COLOR_BGR2GRAY),

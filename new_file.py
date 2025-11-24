@@ -3,6 +3,8 @@ import numpy as np
 from scipy import ndimage
 from matplotlib import pyplot as plt
 
+filename = 'Scan.jpeg'
+
 # --- Definitions and Image Loading ---
 
 # Define a 3x3 kernel size
@@ -17,7 +19,7 @@ kernel_5x5 = np.array([[-1, -1, -1, -1, -1],
                        [-1, 1, 2, 1, -1],
                        [-1, -1, -1, -1, -1]])
 
-img = cv2.imread("gemini.png", cv2.IMREAD_GRAYSCALE)
+img = cv2.imread(filename, cv2.IMREAD_GRAYSCALE)
 img = cv2.fastNlMeansDenoising(img, None, h=10, templateWindowSize=7, searchWindowSize=21)
 
 if img is None:

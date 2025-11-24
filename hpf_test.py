@@ -20,6 +20,9 @@ import numpy as np
 from scipy import ndimage
 from matplotlib import pyplot as plt
 
+filename = 'Scan.jpeg'
+
+
 # Define a 3x3 kernel size
 kernel_3x3 = np.array([[-1, -1, -1],
                        [-1, 8, -1],
@@ -32,7 +35,7 @@ kernel_5x5 = np.array([[-1, -1, -1, -1, -1],
                        [-1, 1, 2, 1, -1],
                        [-1, -1, -1, -1, -1]])
 
-img = cv2.imread("gemini.png", cv2.IMREAD_GRAYSCALE)
+img = cv2.imread(filename, cv2.IMREAD_GRAYSCALE)
 
 # Convolution is a digital image processing technique
 # ...that modifies an image by combining its pixels with
