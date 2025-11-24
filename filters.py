@@ -44,3 +44,12 @@ class FindEdgesFilter(VConvolutionFilter):
                               [-1,  8, -1],
                               [-1, -1, -1]])
         VConvolutionFilter.__init__(self, kernel)
+
+
+class EmbossFilter(VConvolutionFilter):
+    """An emboss filter with a 1-pixel radius."""
+    def __init__(self):
+        kernel = numpy.array([[-2, -1, 0],
+                              [-1,  1, 1],
+                              [ 0,  1, 2]])
+        VConvolutionFilter.__init__(self, kernel)
