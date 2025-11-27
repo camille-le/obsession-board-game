@@ -5,7 +5,7 @@ from matplotlib import pyplot as plt
 # --- CONFIGURATION ---
 # NOTE: You MUST download the haarcascade XML file and update this path.
 # It is typically found in your OpenCV install directory (e.g., in data/haarcascades/).
-CASCADE_PATH = "haarcascade_frontalface_default.xml"
+CASCADE_PATH = "training_data/haarcascade_frontalface_default.xml"
 IMAGE_FILE = "scan1.jpeg"
 
 
