@@ -1,0 +1,1 @@
+This is a collection of research on using opencv techniques to analyze Obsession's board game assets.
