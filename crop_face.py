@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 
 # Read in Image
-filename = 'Scan 3.jpeg'
+filename = 'Scan 6.jpeg'
 
 img = cv2.imread(filename)
 
