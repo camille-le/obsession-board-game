@@ -30,7 +30,7 @@ def correct_orientation(image_path):
         print("[INFO] Image was upside down, rotated 180 degrees.")
     else:
         # For other angles (0, 90, 270), OSD would correct it to 0, if needed.
-        # If the goal is just to fix upside-down images, we keep the original.
+        # If the goal is just to fix upside-down input, we keep the original.
         rotated = image
         print("[INFO] Image orientation is fine or needs a different correction than 180 degrees.")
 
@@ -39,7 +39,7 @@ def correct_orientation(image_path):
     cv2.imwrite(output_path, rotated)
     print(f"Corrected image saved to {output_path}")
 
-    # Display images for verification (optional)
+    # Display input for verification (optional)
     cv2.imshow("Original", image)
     cv2.imshow("Output", rotated)
     cv2.waitKey(0)
@@ -48,4 +48,4 @@ def correct_orientation(image_path):
 # Example usage:
 # Make sure you have a test image file (e.g., 'scanned_card.jpg')
 # correct_orientation('scanned_card.jpg')
-correct_orientation('../images/circle/1200 dpi/Scan 4.jpeg')
+correct_orientation('../input/circle/1200 dpi/Scan 4.jpeg')

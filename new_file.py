@@ -89,9 +89,9 @@ plots = [(cv2.cvtColor(cropped_img, cv2.COLOR_GRAY2BGR), 'Cropped Original', Non
 # --- Create figure and subplots ---
 # fig, axes = plt.subplots(1, 4, figsize=(20, 5))
 #
-# # Plot the images and set titles using iteration
+# # Plot the input and set titles using iteration
 # for ax, (img, title, cmap) in zip(axes, plots):
-#     # Ensure images are properly scaled for display if they are not 3-channel
+#     # Ensure input are properly scaled for display if they are not 3-channel
 #     if len(img.shape) == 2:
 #         ax.imshow(img, cmap=cmap)
 #     else:

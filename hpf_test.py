@@ -65,7 +65,7 @@ plots = [(k3_img_rgb, '3x3', None),
 # Create figure and subplots in one line (or very few)
 fig, axes = plt.subplots(1, 4, figsize=(20, 5))
 
-# Plot the images and set titles using iteration
+# Plot the input and set titles using iteration
 for ax, (img, title, cmap) in zip(axes, plots):
     ax.imshow(img, cmap=cmap)
     ax.set_title(title)
