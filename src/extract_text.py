@@ -4,7 +4,7 @@ import pytesseract
 # Set the path to the Tesseract executable (if not in your system's PATH)
 
 # Path to your image file
-image_path = '../input/circle/1200 dpi/Scan 4.jpeg'
+image_path = 'output/aligned_card.png'
 
 try:
     # Open the image using Pillow

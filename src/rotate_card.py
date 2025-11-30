@@ -86,7 +86,7 @@ def process_card_image(image_path):
     warped = four_point_transform(image, screenCnt.reshape(4, 2))
 
     # *** FIX 1: Must use PNG for transparency support in the next step ***
-    output_path = "../aligned_card.png"
+    output_path = "output/aligned_card.png"
     cv2.imwrite(output_path, warped)
     print(f"[INFO] Aligned card saved to {output_path}")
     return output_path
@@ -111,7 +111,7 @@ def round_corners(image_path, radius):
     image.putalpha(mask)
 
     # *** FIX 2: Must save output as PNG to maintain transparency ***
-    output_path = "../aligned_card_rounded.png"
+    output_path = "output/aligned_card_rounded.png"
     image.save(output_path)
     print(f"[INFO] Rounded card image saved to {output_path}")
     return output_path
@@ -122,7 +122,7 @@ def round_corners(image_path, radius):
 if __name__ == '__main__':
     # Set the path to your input image here
     # Example path assuming you ran the *first* Tesseract script once:
-    input_image_path = 'orientation_corrected_image.jpeg'
+    input_image_path = 'input/circle/1200 dpi/Scan 4.jpeg'
 
     # Adjust this value (in pixels) to match your card's look
     corner_radius_pixels = 30
